@@ -1,0 +1,79 @@
+#Começando pelo backend (DIA 1) -> mkdir backend -> cd backend
+
+* A express é que faz as rotas, por exemplo: www.rocketseat.com/resumo (yarn add express);
+
+* devD -> nodemon observa e refresca o browser com observações novas (yarn add nodemon);
+    |
+    -> yarn nodemon index.js
+    |
+    -> `"scripts": {
+            "dev": "nodemon src/index.js"
+        },`
+        em package.json
+    |
+    -> yarn dev
+
+* Preciso falar para o express que vou utilizar o json -> app.use(express.json());
+
+* Conectar a um banco de dados (MongoDB na nuvem (não relacional))
+    |
+    -> yarn add mongoose (comunicação com MongoDB)
+    |
+    -> Depois de criada a pasta /src e botar index.js nele, cria-se uma pasta /Models e um arquivo da entidade que vai ter na aplicação (Omnistack#10: Dev.js)
+    |
+    ->Neste arquivo, cria-se um esquema (ver Dev.js como exemplo) e exporta-o: module.exports = `mongoose.model('${nome que esse model vai ser salvo no banco de dados}', ${nome do esquema});`
+        |
+        -> Como utilizar este model? No caso da Omnistack#10, será criado uma rota para cadastro dos devs em routes.js
+            |
+            -> Lembrar de cadastrar no Insominia para debug.
+        |
+        -> Pegar de forma desestruturada a info: `const {github_username} = request.body;`.
+        |
+        -> Para obter infos de outras apis (do github, no caso): `yarn add axios`.
+
+* Vale a pena ver todos os operadores do MongoDB
+
+#Hora de fazer o frontend (DIA 2) -> yarn create react-app ${nome da pasta a ser criada}
+
+* Ver comentários.
+
+* Remover bloqueio do MongoDB com `yarn add cors` (pesquisar pode dizer muito).
+	|
+	-> Adicionar `app.use(cors());` no index.js do backend.
+	|
+	-> no frontend, `yarn add axios` para acessar a api, e criar uma pasta chamada services dentro de /src e arquivo api.js
+
+
+#ReactNative (DIA 4): utilizar o Expo, que é um framework para utilizar as funcoes de camera, gps, etc. do android e ios. Com isso, não precisamos do SDK do android ou ios. Expo nao suporta o bluetooth, por essas e outras, costuma ser usado para o comeco de um app.
+
+* O ReactNative não é igual ao ReactDom (web).
+    |
+    -> Não há herança de estilização.
+    |
+    -> Semelhante à div é o View.
+
+* Babel converte o Javascript da versão mais recente para um que outros consigam rodar.
+
+* icon.png -> ícone do app (tem que ter o mesmo tamanho);
+
+  splash.png -> a imagem que aparece antes do app carregar no celular (tem que ter o mesmo tamanho).
+
+* Talvez seja melhor sempre partir da interface para depois o funcional.
+
+* Posso desenhá-lo no InVision Studio!
+
+* docs.expo.io -> Documentação do Expo.
+    |
+    -> Foi adicionado ao projeto: `yarn add react-navigation`.
+    |
+    -> Foi adicionado ao projeto: `expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context`.
+    |
+    -> Foi adicionado ao projeto: `yarn add react-navigation-stack @react-native-community/masked-view` (navegação por botão(nos docs posso achar por abas...)).
+
+* Lembrar que não posso ter um componente de baixo do outro sem um componente envolvendo-os: <></>
+
+* Foi instalado o MapView: `expo install react-native-maps` e `expo install expo-location`
+
+* Para o Profile foi instalado: `expo install react-native-webview`.
+
+* Foi instalado, para comunicar com o backend: `yarn add axios` e, depois, `yarn add socket.io` e no mobile: `yarn add socket.io-client`

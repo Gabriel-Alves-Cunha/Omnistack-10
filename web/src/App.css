@@ -1,0 +1,27 @@
+#app {
+    padding: 60px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* ^tudo centralizado */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* ^^^tudo que esteja dentro do app ficará lado a lado em uma linha a partir do topo*/
+}
+
+#app main {
+    margin-left: 30px;
+}
+
+@media (max-width: 1000px) {
+    #app {
+        position: relative;
+        flex-direction: column;
+        margin: 0;
+        align-items: center;
+    }
+    #app main {
+        margin-left: 0;
+        margin-top: 60px;
+    }
+}
